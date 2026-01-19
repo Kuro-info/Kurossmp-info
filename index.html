@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>KuroSMP Info</title>
+</head>
+<body>
+  <h1>KuroSMP</h1>
+  <p>IP: play.kurossmp.de</p>
+  <p id="status">Loading server status...</p>
+
+  <script>
+    fetch("https://api.mcsrvstat.us/2/play.kurossmp.de")
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById("status").innerText =
+          d.online ? `${d.players.online} players online` : "Server offline";
+      });
+  </script>
+</body>
+</html>
